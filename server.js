@@ -35,7 +35,10 @@ ser.engine("html",con.ejs);
 
 
 //route
-ser.use('/a/', require('./route/1.js')(exp));
-ser.use('/b/', require('./route/2.js')(exp));
+ser.use('/', require('./route/use/roo.js')(exp));
+//admin login route
+ser.use(Q_da.com.admin_login_1, require('./route/adm/ad_lo.js')(exp,Q_da));
+// ser.use('/a/', require('./route/1.js')(exp));
+// ser.use('/b/', require('./route/2.js')(exp));
 //static
 ser.use(sta(Q_da.com.www_static));
