@@ -18,7 +18,10 @@ ser.listen(Q_da.com.www_port);
 
 ///get value
 //file`
+ser.use(bod.urlencoded());
 Q_up.post_file(mul,exp,ser,Q_da);
+
+
 
 //get cookie session
 ser.use(coo(Q_da.com.cookie_key));
