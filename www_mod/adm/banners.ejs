@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+   <div class="page">
+     <% include repeat/head.top.ejs %>
+     <div class="content">
+        <div>
+          <form action="?" method="post">
+            标题:<input type="text" name="title" /><br>
+            描述:<textarea type="text" name="description"></textarea><br>
+            图片链接:<input type="text" name="href" /><br>
+            <input type="submit" value="添加" />
+          </form>
+        </div>
+        <table width="100%">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>标题</th>
+              <th>描述</th>
+              <th>链接</th>
+              <th>缩略</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(let i=0; i<banner.length; i++){ %>
+            <tr>
+              <td><%=banner[i].ID%></td>
+              <td><%=banner[i].title%></td>
+              <td><%=banner[i].description%></td>
+              <td><%=banner[i].href%></td>
+              <td><img src=<%=banner[i].href%> alt="NOT IMG" height="88px"></td>
+              <td>
+                <a href="#">修改</a>
+                <a href="#">删除</a>
+              </td>
+            </tr>
+            <%}%>
+          </tbody>
+        </table>
+     </div>
+   </div>
+
+  </body>
+</html>
