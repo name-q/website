@@ -12,11 +12,19 @@ admin_login_post_key:"/ThisIsAdminLoginPostDataUrl",//Need to be modified//Follo
 // upload_port:8081,
 upload_home:"./www_static/use_upload/",
 up_file_ok:["png","jpg","txt","tif"],//Allowed upload file suffix
+
+//Backstage Navigation  ///The following three array are interrelated
+ad_nav_name:    ["轮播图"    , "博客"     ,  "联系我们"  ,  "评价"        ,  "产品"     ,  "留言"      ,  "新闻"    ],
+ad_nav_title:   ["banners"  ,  "blog"    ,  "contact"   ,  "evaluate"   ,  "product"  ,  "message"  ,   "news"   ],
+ad_nav_url:     ["/banners" ,  "/blog"   ,  "/contact"  ,   "/evaluate" ,  "/product" ,  "/message" ,    "/news" ],
+
 //database->
+db_host:"localhost",
 database_name:"qone",
 db_use:"root",
 db_password:"123456",
 //database over
+
 //☆★Can only be modified before the service is opened☆★  Remember-Remember-Remember
 safety_code:"qy^k*i%n&g)#$?切勿泄露注意注释",
 degree:2, //Security level of the password =>default is 2=>!!! number↑ CPU-pressure↑!!!
