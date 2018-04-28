@@ -1,0 +1,12 @@
+<!-- 突然有个想法：
+1.后台nav的数据不一定要记到数据库中，可以给数据库减负
+2.这套网站的设计理念是多种数据可自定义和修改
+3.把nav数据放到importantData.js中引入这样用户修改直观方便
+-->
+
+
+<div class="top-nav">
+  <% for(let i = 0 ; i<ad_nav_url.length; i++){ %>
+  <a href=<%=surls+ad_nav_url[i] %> title=<%=ad_nav_title[i] %> ><%=ad_nav_name[i]%></a>
+  <%}%>
+</div>
