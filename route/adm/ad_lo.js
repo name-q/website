@@ -2,7 +2,7 @@ const sig = require("../../libs/signature");
 const mys = require("mysql");
 
 module.exports=(express,qyking)=>{
-  let db = mys.createPool({host:"localhost",user:qyking.com.db_use,password:qyking.com.db_password,database:qyking.com.database_name});
+  let db = mys.createPool({host:qyking.com.db_host,user:qyking.com.db_use,password:qyking.com.db_password,database:qyking.com.database_name});
 
 
 
@@ -26,8 +26,8 @@ module.exports=(express,qyking)=>{
         if(data.length>0){
           if(data[0].password == psw){
             req.session["admin_id"] = data[0].ID;
-            // res.redirect(qyking.com.admin_login_2);
-            res.send("successlogin").end();
+            res.redirect(qyking.com.admin_login_1);
+            // res.send("successlogin").end();
           }else{
             res.status(400).send("err").end();
           }
@@ -57,7 +57,12 @@ module.exports=(express,qyking)=>{
   });
 
 
-
+  router.get("/",(req,res)=>{
+    if(!req.session["admin_id"])
+      res.redirect("/wtf.html");
+    else
+      res.render("adm/index.ejs",{surls:qyking.com.admin_login_1,ad_nav_name:qyking.com.ad_nav_name,ad_nav_title:qyking.com.ad_nav_title,ad_nav_url:qyking.com.ad_nav_url});
+  });
 
 
 //over return
