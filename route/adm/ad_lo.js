@@ -87,27 +87,57 @@ module.exports=(express,qyking)=>{
       res.send("data null !").end();
     }else{
       try{
+                                    // console.log("1");
+                                    // let regTIT = /\'|\’/g.test(title);
+                                    // let regDES = /\'|\’/g.test(description);
+                                    // if(regTIT)
+                                    //   res.send("title malice!").end();
+                                    // if(regDES)
+                                    //   res.send("description malice!").end();
+      // console.log('2');
       //length ->font
       if(title.replace(/[\u0391-\uFFE5]/g,"qy").length/2 > lim.limit.title){
         res.send("title too long !").end();
       }else{
-        if(description.replace(/[\u0391-\uFFE5]/g,"qy").length/2 > lim.limit.description){
+        // console.log('3');
+
+        if(description.replace(/[\u0391-\uFFE5]/g,"qy").length/2 > lim.limit.description && regDES){
           res.send("description too long !").end();
         }else{
-          //url ok? 有错晚些改困了
-          if (!new RegExp(/(http:\/\/|https:\/\/)((\w|=|\?|\.|\/|&|-)+)/g).test(href) && new RegExp(/(\.js|\.php)/g).test(href)){
-            res.send("url err!").end();
+          //url ok?
+          // let regular = /\.js|\.php|\.py|\.zip|\.7z|\.java|\.c|\.exe|\.cs|\.cpp|\.asp|\.jsp|\.aspx|\.dll|\.h/g.test(href);
+          if (!new RegExp(/(http:\/\/|https:\/\/)((\w|=|\?|\.|\/|&|-)+)/g).test(href)){
+            res.send("url no http:// or https://  !").end();
           }else{
-            console.log("database add Warning!："+"`INSERT INTO banner (title,description,href) VALUE("+title+","+description+","+href+")")
-            db.query(`INSERT INTO banner (title,description,href) VALUE('${title}','${description}','${href}')`,(err,data)=>{
-              if(err){
-                console.error(err);
-                res.status(500).send("db err").end();
-              }else{
-                res.redirect(qyking.com.admin_login_1+qyking.com.ad_nav_url[0]);
-              }
-            });
+            let regURL = /\.jpg|\.png|\.jpeg|\.gif/g.test(href); ///bug!!! http://qyking.com/aaa.php?xx=.jpg
+            let regURLS = /\.js|\.php|\.py|\.zip|\.7z|\.java|\.c|\.exe|\.cs|\.cpp|\.asp|\.jsp|\.aspx|\.dll|\.h/g.test(href);
 
+            // console.log("4");
+            if(!regURL){
+              // console.log('5');
+              res.send("url no routine image").end();
+              }else{
+                // console.log("6");
+                if(regURLS)
+                  res.send("url dangerous").end();
+
+                  //'=>  &#39;
+                // let ti = title.replace(/\'|\&#39;|\&#39/g,"&#39;");
+                let ti = title.replace(/or/g,"&#q_1;");                               //&#q_1; => or🌙
+                let de = description.replace(/or/g,"&#q_1;");
+                let hr = href.replace(/or/g,"&#q_1;");
+                // ???????asyn error 
+                console.log(ti +" "+de+" "+hr);
+                console.log("database add Warning!："+"`INSERT INTO banner (title,description,href) VALUE("+title+","+description+","+href+")")
+                db.query(`INSERT INTO banner (title,description,href) VALUE('${ti}','${de}','${hr}')`,(err,data)=>{
+                  if(err){
+                    console.error(err);
+                    res.status(500).send("db err").end();
+                  }else{
+                    res.redirect(qyking.com.admin_login_1+qyking.com.ad_nav_url[0]);
+                  }
+                });
+            }
           }
         }
       }
