@@ -112,7 +112,7 @@ module.exports=(express,qyking)=>{
           return res.status(400).send("description too long !").end();
         }else{
           //url ok?
-          // let regular = /\.js|\.php|\.py|\.zip|\.7z|\.java|\.c|\.exe|\.cs|\.cpp|\.asp|\.jsp|\.aspx|\.dll|\.h/g.test(href);
+          // let regular = /\.js|\.php|\.py|\.zip|\.7z|\.java|\.exe|\.cs|\.cpp|\.asp|\.jsp|\.aspx|\.dll|\.h/g.test(href);
           if (!new RegExp(/(http:\/\/|https:\/\/)((\w|=|\?|\.|\/|&|-)+)/g).test(href)){
             return res.status(400).send("url no http:// or https://  !").end();
           }else{
@@ -146,7 +146,7 @@ module.exports=(express,qyking)=>{
                 db.query(`INSERT INTO banner (title,description,href) VALUE("${ti}","${de}","${hr}")`,(err,data)=>{
                   if(err){
                     console.error(err);
-                    return res.status(500).send("db err").end();
+                    return res.status(500).send("url long err").end();
                   }else{
                     return res.redirect(qyking.com.admin_login_1+qyking.com.ad_nav_url[0]);
                   }
