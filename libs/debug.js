@@ -8,5 +8,5 @@
 // var zz = /\.js|\.php/g.test('my name is qy .php?id=china');
 // let regURL = /\.jpg|\.png|\.jpeg|\.gif/g.test('http//aa.jpeg');
 // console.log(!regURL);
-let str = "hahaha雨'哥''哥’最帅"
-console.log(str.replace(/'/g,"&#39;"));
+// let str = "hahaha雨'哥''哥’最帅"
+// console.log(str.replace(/'/g,"&#39;"));
