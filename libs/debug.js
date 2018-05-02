@@ -10,3 +10,15 @@
 // console.log(!regURL);
 // let str = "hahaha雨'哥''哥’最帅"
 // console.log(str.replace(/'/g,"&#39;"));
+// let use = "123456";
+// use = use.replace(/1/g,"&#q_1;").replace(/3/g,"&#q_3;").replace(/2/g,"&#q_2;");
+//
+//
+// console.log(use);
+
+////////log////////
+const log = require("./libs/write_log");
+let ss = "wwahsduo";
+let sss = 2;
+log.success("ajsoidowoono"+ss);
+log.error(1+sss);
