@@ -6,14 +6,28 @@ const log = require("../../libs/write_log");
 module.exports=(express,qyking)=>{
   let db = mys.createPool({host:qyking.com.db_host,user:qyking.com.db_use,password:qyking.com.db_password,database:qyking.com.database_name});
 
-
-
-
   let router=express.Router();
 
-  //url admin_login_1 next
 
-  ///jump post admin data!!
+
+
+
+
+  //url is login or login success?   all
+  router.use((req,res,next)=>{
+    if(!req.session["admin_id"] && req.url != qyking.com.admin_login_2+".html")
+      return res.redirect("/wtf.html").end();
+    else
+      next();
+  })
+
+  ///return login page///
+  router.get(qyking.com.admin_login_2+".html",(req, res)=>{
+    // res.send('admin success').end();
+    return res.render("adm/ad_login.ejs",{postUrl:qyking.com.admin_login_1+qyking.com.admin_login_2+qyking.com.admin_login_post_key})
+  });
+
+  ///ad login post
   router.post(qyking.com.admin_login_2+qyking.com.admin_login_post_key,(req,res)=>{
     // console.log(req.body);
     let use = req.body.use;
@@ -45,122 +59,19 @@ module.exports=(express,qyking)=>{
           return res.status(400).send("err").end();
         }
       }
-  });
-
-
-  });
-
-
-
-  //No entry   //all in
-  router.use((req,res,next)=>{
-    if(!req.session["admin_id"] && req.url != qyking.com.admin_login_2+".html")
-      return res.redirect("/wtf.html");
-    else
-      next();
-  })
-
-  ///jump login html///
-  router.get(qyking.com.admin_login_2+".html",(req, res)=>{
-    // res.send('admin success').end();
-    return res.render("adm/ad_login.ejs",{postUrl:qyking.com.admin_login_1+qyking.com.admin_login_2+qyking.com.admin_login_post_key})
+    });
   });
 
  //ad index↓
   router.get("/",(req,res)=>{
     if(!req.session["admin_id"])   //I know it's repeated, but I'm worried
-      return res.redirect("/wtf.html");  // :) 🍎 q
+      return res.redirect("/wtf.html").end();  // :) 🍎 q
     else
       return res.render("adm/index.ejs",{surls:qyking.com.admin_login_1,ad_nav_name:qyking.com.ad_nav_name,ad_nav_title:qyking.com.ad_nav_title,ad_nav_url:qyking.com.ad_nav_url});
   });
 
   //nav_1  banners
-  router.get(qyking.com.ad_nav_url[0],(req,res)=>{
-    if(!req.session["admin_id"]){
-      return res.redirect("/wtf.html");
-    }else{
-      db.query("SELECT * FROM `banner`",(err,data)=>{
-        if(err){
-          log.error(err);
-          return res.status(500).send("db err").end();
-        }else{
-          return res.render("adm/banners.ejs",{surls:qyking.com.admin_login_1,ad_nav_name:qyking.com.ad_nav_name,ad_nav_title:qyking.com.ad_nav_title,ad_nav_url:qyking.com.ad_nav_url,banner:data});
-        }
-      });
-    }
-  });
-  router.post(qyking.com.ad_nav_url[0],(req,res)=>{
-    let title = req.body.title;
-    let description = req.body.description;
-    let href = req.body.href;
-    if(!title || !description || !href){
-      return res.status(400).send("data null !").end();
-    }else{
-      try{
-                                    // console.log("1");
-                                    // let regTIT = /\'|\’/g.test(title);
-                                    // let regDES = /\'|\’/g.test(description);
-                                    // if(regTIT)
-                                    //   res.send("title malice!").end();
-                                    // if(regDES)
-                                    //   res.send("description malice!").end();
-      // console.log('2');
-      //length ->font
-      if(title.replace(/[\u0391-\uFFE5]/g,"qy").length/2 > lim.limit.title){
-        return res.status(400).send("title too long !").end();
-      }else{
-        // console.log('3');
-
-        if(description.replace(/[\u0391-\uFFE5]/g,"qy").length/2 > lim.limit.description){
-          return res.status(400).send("description too long !").end();
-        }else{
-          //url ok?
-          // let regular = /\.js|\.php|\.py|\.zip|\.7z|\.java|\.exe|\.cs|\.cpp|\.asp|\.jsp|\.aspx|\.dll|\.h/g.test(href);
-          if (!new RegExp(/(http:\/\/|https:\/\/)((\w|=|\?|\.|\/|&|-)+)/g).test(href)){
-            return res.status(400).send("url no http:// or https://  !").end();
-          }else{
-            let regURL = /\.jpg|\.png|\.jpeg|\.gif/g.test(href); ///bug!!! http://qyking.com/aaa.php?xx=.jpg
-            let regURLS = /\.js|\.php|\.py|\.zip|\.7z|\.java|\.exe|\.cs|\.cpp|\.asp|\.jsp|\.aspx|\.dll|\.h/g.test(href);
-
-            // console.log("4");
-            if(!regURL){
-              // console.log('5');
-              return res.status(400).send("url no routine image").end();
-              }else{
-                // console.log("6");
-                if(regURLS)
-                  return res.status(400).send("url dangerous").end();
-
-                   //"=>  &#q_0;; 🌙
-                  //'=>  &#q_1;; 🌙
-                 //or => &#q_2; 🌙
-                title = title.replace(/"/g,"&#q_0;").replace(/'/g,"&#q_1;").replace(/or/g,"&#q_2;");
-                description = description.replace(/"/g,"&#q_0;").replace(/'/g,"&#q_1;").replace(/or/g,"&#q_2;");
-                href = href.replace(/"/g,"&#q_0;").replace(/'/g,"&#q_1;").replace(/or/g,"&#q_2;");
-
-
-
-                // console.log(ti +" "+de+" "+hr);
-                log.success("database add Warning!："+"`INSERT INTO banner (title,description,href) VALUE("+title+","+description+","+href+")")
-                db.query(`INSERT INTO banner (title,description,href) VALUE("${title}","${description}","${href}")`,(err,data)=>{
-                  if(err){
-                    log.error(err);
-                    return res.status(500).send("url long err").end();
-                  }else{
-                    return res.redirect(qyking.com.admin_login_1+qyking.com.ad_nav_url[0]);
-                  }
-                });
-            }
-          }
-        }
-      }
-
-
-      // res.send("ok").end();
-    }catch(err){}
-    }
-  });
-
+  router.use(qyking.com.ad_nav_url[0],require("./banner.js")(express,qyking,db,log,lim));
 //nav_1  banners over
 
 
