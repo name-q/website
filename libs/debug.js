@@ -17,8 +17,11 @@
 // console.log(use);
 
 ////////log////////
-const log = require("./libs/write_log");
-let ss = "wwahsduo";
-let sss = 2;
-log.success("ajsoidowoono"+ss);
-log.error(1+sss);
+// const log = require("./libs/write_log");
+// let ss = "wwahsduo";
+// let sss = 2;
+// log.success("ajsoidowoono"+ss);
+// log.error(1+sss);
+
+
+console.log(new RegExp(/^[0-9]*$/).test("123456987654321"));
