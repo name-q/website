@@ -1,2 +1,25 @@
-[2018-05-02 17:50:43.640] - success message |管理员登入 username=qy
-[2018-05-02 17:50:43.640] - success message |database add Warning!：`INSERT INTO banner (title,description,href) VALUE(&#q_1;&#q_2;&#q_1;=651,&#q_1;&#q_2;&#q_1;&#q_1;=sdaoushd,https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1525257994934&di=8e903b1706b816b985d5747793dcc122&imgtype=0&src=http%3a%2f%2fimgst&#q_2;e.cdn.sogou.com%2fapp%2fa%2f100540002%2f654340.jpg	)
+[2018-05-13 17:46:09] - success message |管理员登入 username=qy
+[2018-05-13 17:47:08] - success message |管理员登入 username=qy
+[2018-05-13 17:48:06] - success message |管理员登入 username=qy
+[2018-05-13 17:48:39] - success message |database add Warning!：`INSERT INTO banner (title,description,href) VALUE(qq,www,http://ada.jpg)
+[2018-05-13 17:48:56] - success message |database add Warning!：`INSERT INTO banner (title,description,href) VALUE(1,1,http://1.jpg)
+[2018-05-13 17:49:03] - success message |database add Warning!：`INSERT INTO banner (title,description,href) VALUE(2,2,http://2.jpg)
+[2018-05-13 17:49:11] - success message |database add Warning!：`INSERT INTO banner (title,description,href) VALUE(3,3,http://3.jpg)
+[2018-05-13 18:22:47] - success message |管理员登入 username=qy
+[2018-05-13 18:35:06] - success message |管理员登入 username=qy
+[2018-05-13 18:35:41] - success message |管理员登入 username=qy
+[2018-05-13 21:05:23] - success message |管理员登入 username=qy
+[2018-05-13 21:05:34] - success message |`DELETE FROM banner WHERE ID=67
+[2018-05-13 21:05:53] - success message |database add Warning!：`UPDATE banner title=3,description=sss&#q_1;&#q_0;&#q_1;&#q_1;&#q_2;&#q_1;&#q_1;,href=http://3.jpgWHERE ID=69
+[2018-05-13 21:06:07] - success message |database add Warning!：`UPDATE banner title=3,description=sss&#q_1;&#q_0;&#q_1;&#q_1;&#q_2;&#q_1;&#q_1;,href=http://d.jpgasdaWHERE ID=69
+[2018-05-13 21:06:22] - success message |database add Warning!：`UPDATE banner title=3,description=sss&#q_1;&#q_0;&#q_1;&#q_1;&#q_2;&#q_1;&#q_1;,href=https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1525257994934&di=8e903b1706b816b985d5747793dcc122&imgtype=0&src=http%3a%2f%2fimgst&#q_2;e.cdn.sogou.com%2fapp%2fa%2f100540002%2f654340.jpg	WHERE ID=69
+[2018-05-13 21:25:57] - success message |管理员登入 username=qy
+[2018-05-13 21:38:00] - success message |database add Warning!：`UPDATE banner title=&#q_1;&#q_2;&#q_1;=651,description=sssss,href=https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1525257994934&di=8e903b1706b816b985d5747793dcc122&imgtype=0&src=http%3a%2f%2fimgst&#q_2;e.cdn.sogou.com%2fapp%2fa%2f100540002%2f654340.jpg	WHERE ID=65
+[2018-05-13 21:40:14] - success message |database add Warning!：`UPDATE banner title=&#q_1;&#q_2;&#q_1;=651,description=1wwq,href=https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1525257994934&di=8e903b1706b816b985d5747793dcc122&imgtype=0&src=http%3a%2f%2fimgst&#q_2;e.cdn.sogou.com%2fapp%2fa%2f100540002%2f654340.jpg	WHERE ID=65
+[2018-05-13 21:55:17] - success message |管理员登入 username=qy
+[2018-05-13 21:56:32] - success message |管理员登入 username=qy
+[2018-05-13 21:57:40] - success message |管理员登入 username=qy
+[2018-05-13 21:57:54] - success message |`DELETE FROM banner WHERE ID=65
+[2018-05-13 22:00:03] - success message |管理员登入 username=qy
+[2018-05-13 22:00:08] - success message |database add Warning!：`INSERT INTO banner (title,description,href) VALUE(1,1,http://1.jpg)
+[2018-05-13 22:00:14] - success message |database add Warning!：`UPDATE banner title=1,description=222,href=http://1.jpgWHERE ID=70
