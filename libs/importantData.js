@@ -10,7 +10,7 @@ admin_login_2:"/login/keys", //Column as the current default path is http://loca
 www_port:80,
 admin_login_post_key:"/ThisIsAdminLoginPostDataUrl",//Need to be modified//Follow the URL address rules//☆★Be sure to keep it confidential
 // upload_port:8081,
-upload_home:"./www_static/use_upload/",
+upload_home:"./www_static/use_upload/", ///!!!this path = www_static_path +new path
 up_file_ok:["png","jpg","txt","tif"],//Allowed upload file suffix
 
 //Backstage Navigation  ///The following three array are interrelated
