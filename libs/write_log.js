@@ -41,8 +41,8 @@ Date.prototype.format = function (format) {
 
   module.exports={
     success:(value)=>{
-      qy.log(`[${getNewTime()}] - success message |${value}`);},
+      qy.log(`[${getNewTime()}] - success |${value}`);},
 
     error:(value)=>{
-      qy.error(`[${getNewTime()}] - error message |${value}`);}
+      qy.error(`[${getNewTime()}] - error |${value}`);}
   }
