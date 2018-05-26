@@ -39,7 +39,7 @@ module.exports =  function(express,qyking,db,log,lim){
                 log.error(err);
                 return res.status(500).send("db err").end();
               }else{
-                res.redirect(qyking.com.admin_login_1+qyking.com.ad_nav_url[0]);
+                return res.redirect(qyking.com.admin_login_1+qyking.com.ad_nav_url[0]);
               }
             });
           }else{

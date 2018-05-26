@@ -6,10 +6,10 @@ const mys = require("mysql");
 const con = require("consolidate");
 const rou = require("express-route");
 const bod = require("body-parser");
-const mul = require("multer");
+// const mul = require("multer");
 //libs
 const Q_da = require("./libs/importantData");
-const Q_up = require("./libs/upload");
+// const Q_up = require("./libs/upload");
 
 
 //server
@@ -18,8 +18,8 @@ ser.listen(Q_da.com.www_port);
 
 ///get value
 //file`
-ser.use(bod.urlencoded());
-Q_up.post_file(mul,exp,ser,Q_da);
+ser.use(bod.urlencoded({extended:false}));
+// Q_up.post_file(mul,exp,ser,Q_da);
 
 
 
