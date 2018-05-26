@@ -24,4 +24,4 @@
 // log.error(1+sss);
 
 
-console.log(new RegExp(/^[0-9]*$/).test("123456987654321"));
+// console.log(new RegExp(/^[0-9]*$/).test("123456987654321"));
