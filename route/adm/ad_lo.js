@@ -26,22 +26,25 @@ module.exports=(express,qyking)=>{
     // console.log("2");
 
 
-    log.success("管理员登入 username="+use)
+    log.success("管理员欲登入 username="+use);
     db.query(`SELECT * FROM ad_super WHERE username='${use}'`,
     (err,data)=>{
       if(err){
-        log.error(err);
+        log.error("★管理员登入严重失败use:|"+use+"|err:"+err);
         return res.status(500).send("err").end();
       }else{
         if(data.length>0){
           if(data[0].password == psw){
             req.session["admin_id"] = data[0].ID;
+            log.success("管理员登入 username="+use);
             return res.redirect(qyking.com.admin_login_1);
             // res .send("successlogin").end();
           }else{
+            log.error("管理员登入失败 username="+use);
             return res.status(400).send("err").end();
           }
         }else{
+          log.error("管理员登入失败 username="+use);
           return res.status(400).send("err").end();
         }
       }

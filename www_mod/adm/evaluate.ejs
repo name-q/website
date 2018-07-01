@@ -18,14 +18,14 @@
         top: 0;
       }
       .mod_box{
-        width: 300px;
-        height: 200px;
+        width: 400px;
+        height: 300px;
         border: 1px solid blue;
         border-radius: 8px;
         background: #fff;
         position: fixed;
         left: 50%;
-        margin: -100px 0 0 -150px;
+        margin: -150px 0 0 -200px;
       }
 
       table{text-align: center;}
@@ -74,12 +74,13 @@
         <div class="bg"></div>
         <div class="mod_box">
           <a href="<%=surls+ad_nav_url[3]%>">×</a>
-          <form action="?" method="post">
+          <form action="?" method="post"  enctype="multipart/form-data">
             <input type="hidden" name="mod_id" value="<%=mod_data.ID%>"/><br>
             标题:<input type="text" name="title" value="<%=mod_data.title.replace(/&#q_0;/g,'"').replace(/&#q_1;/g,"'").replace(/&#q_2;/g,"or")%>"/><br>
             描述:<textarea type="text" name="description"><%=mod_data.description.replace(/&#q_0;/g,'"').replace(/&#q_1;/g,"'").replace(/&#q_2;/g,"or")%></textarea><br>
-            头像:<input type="flie" onkeyup="this.value=this.value.toLocaleLowerCase()" name="f1" /><br>
+            新头像:<input type="file" name="headI" /><br>
             <input type="submit"  onclick="return confirm('真的要修改么？')" value="修改" />
+            当前头像：<img src=<%=mod_data.src.replace(/&#q_0;/g,'"').replace(/&#q_1;/g,"'").replace(/&#q_2;/g,"or") %> alt="NOT IMG" height="50">
           </form>
         </div>
         <%}%>

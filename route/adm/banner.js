@@ -92,15 +92,11 @@ module.exports =  function(express,qyking,db,log,lim){
           if (!new RegExp(/(http:\/\/|https:\/\/)((\w|=|\?|\.|\/|&|-)+)/g).test(href)){
             return res.status(400).send("url no http:// or https://  !").end();
           }else{
-            let regURL = /\.jpg|\.png|\.jpeg|\.gif/g.test(href); ///bug!!! http://qyking.com/aaa.php?xx=.jpg
+            let regURL = /\.jpg|\.png|\.jpeg|\.gif/g.test(href);
             let regURLS = /\.js|\.php|\.py|\.zip|\.7z|\.java|\.exe|\.cs|\.cpp|\.asp|\.jsp|\.aspx|\.dll|\.h/g.test(href);
-
-            // console.log("4");
             if(!regURL){
-              // console.log('5');
               return res.status(400).send("url no routine image").end();
               }else{
-                // console.log("6");
                 if(regURLS)
                   return res.status(400).send("url dangerous").end();
 
@@ -114,10 +110,10 @@ module.exports =  function(express,qyking,db,log,lim){
                 if (req.body.mod_id) {
                   //修改
                   if(new RegExp(/^[0-9]*$/).test(req.body.mod_id)){
-                    log.success("database add Warning!："+"`UPDATE banner title="+title+",description="+description+",href="+href+"WHERE ID="+req.body.mod_id);
+                    log.success("database UPDATE Warning!："+"`UPDATE banner title="+title+",description="+description+",href="+href+"WHERE ID="+req.body.mod_id);
                     db.query(`UPDATE banner SET title="${title}",description="${description}",href="${href}" WHERE ID="${req.body.mod_id}"`,(err,data)=>{
                       if(err){
-                        log.error(err);
+                        log.error("banner update err:"+err);
                         return res.status(500).send("url long err").end();
                       }else{
                         return res.redirect(qyking.com.admin_login_1+qyking.com.ad_nav_url[0]);
